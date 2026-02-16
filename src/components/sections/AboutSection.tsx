@@ -5,7 +5,7 @@ import { useRef } from "react";
 import TextReveal from "@/components/TextReveal";
 import ScrollReveal from "@/components/ScrollReveal";
 import Parallax from "@/components/Parallax";
-import { skills, experience } from "@/data/portfolio";
+import { skills, experience, education } from "@/data/portfolio";
 
 function SkillBar({ name, delay }: { name: string; delay: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -187,6 +187,45 @@ export default function AboutSection() {
             {experience.map((item, i) => (
               <TimelineItem key={i} item={item} index={i} />
             ))}
+
+            {/* Education */}
+            <ScrollReveal delay={0.4}>
+              <h3
+                className="text-sm font-semibold tracking-[0.15em] uppercase mb-8 mt-12"
+                style={{ color: "var(--foreground)" }}
+              >
+                Education
+              </h3>
+            </ScrollReveal>
+
+            {education.map((edu, i) => (
+              <ScrollReveal key={i} delay={0.5 + i * 0.15}>
+                <div className="relative pl-8 pb-8 last:pb-0">
+                  <div
+                    className="absolute left-0 top-3 w-[1px] h-full"
+                    style={{ backgroundColor: "var(--card-border)" }}
+                  />
+                  <div
+                    className="absolute left-[-4px] top-2.5 w-[9px] h-[9px] rounded-full"
+                    style={{ backgroundColor: "var(--accent-yellow)" }}
+                  />
+                  <span className="text-sm font-medium" style={{ color: "var(--accent-yellow)" }}>
+                    {edu.period}
+                  </span>
+                  <h4 className="text-xl font-bold mt-1 mb-1" style={{ color: "var(--foreground)" }}>
+                    {edu.degree}
+                  </h4>
+                  <p className="text-base mb-2" style={{ color: "var(--muted)" }}>
+                    {edu.institution}
+                  </p>
+                  {edu.details && (
+                    <p className="text-sm" style={{ color: "var(--muted)" }}>
+                      {edu.details}
+                    </p>
+                  )}
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
 
           {/* Right column - Skills */}
@@ -224,38 +263,6 @@ export default function AboutSection() {
               ))}
             </div>
 
-            {/* Fun interactive draggable element */}
-            <ScrollReveal delay={0.5}>
-              <div className="mt-16">
-                <p className="text-xs tracking-[0.15em] uppercase mb-4" style={{ color: "var(--muted)" }}>
-                  Drag me around
-                </p>
-                <motion.div
-                  drag
-                  dragConstraints={{ left: -100, right: 100, top: -50, bottom: 50 }}
-                  dragElastic={0.1}
-                  whileDrag={{ scale: 1.05, rotate: 5 }}
-                  whileHover={{ scale: 1.02 }}
-                  className="inline-flex items-center gap-4 px-6 py-4 rounded-2xl cursor-grab active:cursor-grabbing"
-                  style={{
-                    backgroundColor: "var(--surface)",
-                    border: "1px solid var(--card-border)",
-                    boxShadow: "var(--card-shadow)",
-                  }}
-                  data-cursor-hover
-                >
-                  <span className="text-3xl">&#9997;</span>
-                  <div>
-                    <p className="font-semibold text-sm" style={{ color: "var(--foreground)" }}>
-                      Available for opportunities
-                    </p>
-                    <p className="text-xs" style={{ color: "var(--muted)" }}>
-                      Let&apos;s build something great together
-                    </p>
-                  </div>
-                </motion.div>
-              </div>
-            </ScrollReveal>
           </div>
         </div>
       </div>

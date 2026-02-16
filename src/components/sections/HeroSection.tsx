@@ -150,17 +150,6 @@ export default function HeroSection() {
                     <polyline points="7 7 17 7 17 17" />
                   </svg>
                 </MagneticButton>
-                <MagneticButton
-                  as="a"
-                  href="#contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold border-2 transition-all duration-300"
-                  style={{
-                    borderColor: "var(--card-border)",
-                    color: "var(--foreground)",
-                  }}
-                >
-                  Get in Touch
-                </MagneticButton>
               </div>
             </ScrollReveal>
           </div>

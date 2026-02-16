@@ -1,42 +1,38 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useState, useCallback, useRef } from "react";
+import { motion } from "framer-motion";
 
 export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(true);
-
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-
-  const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
+  const posRef = useRef({ x: -100, y: -100 });
+  const [pos, setPos] = useState({ x: -100, y: -100 });
+  const rafRef = useRef<number>(0);
 
   const onMouseMove = useCallback(
     (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
+      posRef.current = { x: e.clientX, y: e.clientY };
       if (!isVisible) setIsVisible(true);
+      // Use rAF to batch position updates at screen refresh rate
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        setPos({ x: posRef.current.x, y: posRef.current.y });
+      });
     },
-    [cursorX, cursorY, isVisible]
+    [isVisible]
   );
 
   useEffect(() => {
-    // Detect touch device
     const hasTouch =
       "ontouchstart" in window || navigator.maxTouchPoints > 0;
     setIsTouchDevice(hasTouch);
 
     if (hasTouch) return;
-
-    // Check prefers-reduced-motion
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     document.body.classList.add("cursor-none");
-
     window.addEventListener("mousemove", onMouseMove);
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -73,6 +69,7 @@ export default function CustomCursor() {
       window.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseover", handleMouseOver);
       document.removeEventListener("mouseout", handleMouseOut);
+      cancelAnimationFrame(rafRef.current);
     };
   }, [onMouseMove]);
 
@@ -81,14 +78,11 @@ export default function CustomCursor() {
   return (
     <>
       {/* Main cursor dot */}
-      <motion.div
+      <div
         data-no-theme-transition
         className="fixed top-0 left-0 pointer-events-none z-[10000] mix-blend-difference"
         style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-          translateX: "-50%",
-          translateY: "-50%",
+          transform: `translate(${pos.x}px, ${pos.y}px) translate(-50%, -50%)`,
         }}
       >
         <motion.div
@@ -100,16 +94,13 @@ export default function CustomCursor() {
           transition={{ type: "spring", damping: 20, stiffness: 300 }}
           className="rounded-full bg-white"
         />
-      </motion.div>
+      </div>
       {/* Trailing ring */}
-      <motion.div
+      <div
         data-no-theme-transition
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-          translateX: "-50%",
-          translateY: "-50%",
+          transform: `translate(${pos.x}px, ${pos.y}px) translate(-50%, -50%)`,
         }}
       >
         <motion.div
@@ -123,7 +114,7 @@ export default function CustomCursor() {
           className="rounded-full border-white/40"
           style={{ borderStyle: "solid", borderColor: "rgba(255,255,255,0.3)" }}
         />
-      </motion.div>
+      </div>
     </>
   );
 }

@@ -143,26 +143,39 @@ export interface Education {
 
 export const experience: Experience[] = [
   {
-    role: "Software Engineer",
-    company: "Professional Experience",
-    period: "2022 - Present",
+    role: "Software Developer",
+    company: "Ericsson",
+    period: "Jan 2023 - Present",
     description:
-      "Building robust full-stack applications with modern architectures, cloud services, and cross-platform solutions.",
+      "Working on network management and OSS/BSS software within a large-scale agile team.",
     highlights: [
-      "Designed and deployed microservices using .NET, Azure, and Docker",
-      "Built cross-platform apps with Avalonia, Uno Platform, and React Native",
-      "Implemented real-time systems with SignalR and WebSocket protocols",
-      "Created CI/CD pipelines with GitHub Actions and Vercel",
+      "Developed and maintained microservices for network management platforms using Java and Python",
+      "Built internal tooling and automation to streamline CI/CD pipelines and developer workflows",
+      "Contributed to cloud-native deployments on Kubernetes with Helm charts and Docker containers",
+      "Collaborated across cross-functional teams in an agile environment to deliver features on tight release cycles",
+      "Worked with large-scale distributed systems handling real-time network telemetry data",
+    ],
+  },
+  {
+    role: "Software Developer Intern",
+    company: "Ericsson",
+    period: "Mar 2022 - Aug 2022",
+    description:
+      "6-month co-op placement on the network management team.",
+    highlights: [
+      "Developed automation scripts and testing frameworks to improve regression test coverage",
+      "Gained hands-on experience with enterprise-scale Java codebases and CI/CD pipelines",
+      "Participated in code reviews, sprint planning, and agile ceremonies",
     ],
   },
 ];
 
 export const education: Education[] = [
   {
-    degree: "Computer Science",
-    institution: "University",
-    period: "2018 - 2022",
-    details: "Focus on software engineering, algorithms, and distributed systems",
+    degree: "BSc (Hons) Computer Science",
+    institution: "University of Limerick",
+    period: "2019 - 2023",
+    details: "Software engineering, algorithms, data structures, and distributed systems. Included a 6-month co-op placement at Ericsson.",
   },
 ];
 
