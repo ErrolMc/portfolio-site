@@ -144,60 +144,128 @@ export interface Education {
 export const experience: Experience[] = [
   {
     role: "Software Engineer",
-    company: "Professional Experience",
-    period: "2022 - Present",
+    company: "Westpac",
+    period: "May 2025 - Present",
     description:
-      "Building robust full-stack applications with modern architectures, cloud services, and cross-platform solutions.",
+      "Westpac Live digital banking platform — 35M+ line C#/.NET codebase with 100+ active developers.",
     highlights: [
-      "Designed and deployed microservices using .NET, Azure, and Docker",
-      "Built cross-platform apps with Avalonia, Uno Platform, and React Native",
-      "Implemented real-time systems with SignalR and WebSocket protocols",
-      "Created CI/CD pipelines with GitHub Actions and Vercel",
+      "Own and enhance components of the Westpac Live digital banking platform in a massive C#/.NET codebase",
+      "Design and maintain mission-critical backend services and ASP.NET MVC web forms (Knockout.js, jQuery, Bootstrap) with focus on reliability, security, and performance",
+      "Practice CQRS by separating read/write models for critical banking flows, simplifying business logic and testability",
+      "Work with React and Next.js alongside existing ASP.NET Web Forms for a new customer-facing banking experience",
+      "Maintain APIs that drive a consistent look and feel across iOS and Android apps via a bespoke screen-layout/interaction language",
+      "Lead onboarding and upskilling of 4 new developers from Python/Swift/TypeScript backgrounds into C# and API development",
+      "Participate in Agile ceremonies and quarterly planning, aligning technical delivery with business priorities and regulatory obligations",
+    ],
+  },
+  {
+    role: "Software Developer",
+    company: "Multinail",
+    period: "Aug 2023 - May 2025",
+    description:
+      "Cornerstone Software Suite — legacy C#/.NET codebase with millions of lines of code.",
+    highlights: [
+      "Managed and extended a legacy C#/.NET codebase encompassing millions of lines of code",
+      "Translated complex civil engineering specifications into actionable software requirements and features",
+      "Applied TDD rigorously — comprehensive unit and integration tests ensuring safety against regressions",
+      "Analyzed and resolved client-reported bugs with a proactive, systematic approach to maintain quality",
+      "Collaborated closely with three additional teams responsible for different modules within the software suite",
+    ],
+  },
+  {
+    role: "Software Engineer II",
+    company: "Playside Studios",
+    period: "July 2022 - Aug 2023",
+    description:
+      "Game development — Shiba Eternity, Meta Horizon Worlds, Doc Batman: Bat-Tech Edition.",
+    highlights: [
+      "Programmed real-time gameplay mechanics and APIs; managed deployments to iOS, Android, Windows, and Nintendo Switch",
+      "Wrote and deployed Azure Functions for Azure Playfab data updates and cloud-based player reward calculations",
+      "Created net-code for multiplayer compatibility across multiple game titles",
+      "Integrated Oculus VR SDK for Unity, developing immersive interaction mechanics and optimizing performance",
+      "Contributed to CI/CD pipeline triggering automatic builds on PR merges; employed TDD to reduce QA workload",
+    ],
+  },
+  {
+    role: "Lead Software Engineer",
+    company: "BailEnemyJet",
+    period: "Jan 2018 - July 2022",
+    description:
+      "Shipped multiple titles — Brawlerz Zombies, OTTTD, Thumbdrift, Fast and Furious: Takedown, Manifold Garden, Star Wars Force Link 2.0, and more.",
+    highlights: [
+      "Led UI/UX programming, real-time gameplay mechanics, and CI/CD pipeline management for the development team",
+      "Ported multiple games from mobile to Nintendo Switch; integrated AR SDKs (ARKit/ARCore) into mobile games",
+      "Built Bluetooth communication systems from mobile devices to a proprietary mass-market hardware device",
+      "Created a cross-platform abstraction layer enabling engineers to write logic once for multiple platforms, increasing revenue and productivity",
+      "Built an animation system to automate tasks previously done manually by animators, boosting throughput",
+      "Migrated a legacy Windows XP database to AWS (DynamoDB/S3), cutting on-premises hosting costs",
     ],
   },
 ];
 
 export const education: Education[] = [
   {
-    degree: "Computer Science",
-    institution: "University",
-    period: "2018 - 2022",
-    details: "Focus on software engineering, algorithms, and distributed systems",
+    degree: "Bachelor of Computer Science, Major in Software Development",
+    institution: "Griffith University Gold Coast Campus",
+    period: "Graduated July 2021",
+    details: "GPA: 6",
+  },
+  {
+    degree: "Microsoft Certified: Azure Fundamentals (AZ-900)",
+    institution: "Microsoft",
+    period: "April 2023",
   },
 ];
 
 export const skills = {
-  languages: ["C#", "TypeScript", "JavaScript", "Python", "SQL", "HTML/CSS"],
-  frameworks: [
-    ".NET / ASP.NET Core",
+  "Languages & Engines": [
+    "C#",
+    ".NET (ASP.NET MVC, Web Forms)",
+    "Unity",
+    "Unreal Engine",
+    "TypeScript",
+    "JavaScript",
+    "Python",
+    "SQL",
+  ],
+  "Web & UI": [
     "React",
     "React Native",
     "Next.js",
+    "Knockout.js",
+    "jQuery",
+    "Bootstrap",
     "Avalonia UI",
     "Uno Platform",
     "Electron",
   ],
-  cloud: [
-    "Azure (Cosmos DB, SignalR, App Service)",
-    "Vercel",
+  "Cloud & DevOps": [
+    "Azure (Functions, Cosmos DB, SignalR, Playfab)",
+    "AWS (DynamoDB, S3)",
+    "CI/CD (TeamCity, Jenkins, GitHub Actions)",
     "Docker",
+    "Git",
     ".NET Aspire",
   ],
-  tools: [
-    "Git",
-    "GitHub Actions",
-    "REST APIs",
-    "JWT Auth",
-    "MessagePack",
-    "OpenTelemetry",
+  "Practices & Tools": [
+    "TDD",
+    "CQRS",
+    "OOP",
+    "Agile / Scrum",
+    "ITIL",
+    "Visual Studio",
+    "Rider",
+    "Jira",
+    "Confluence",
+    "Linux",
   ],
 };
 
 export const personalInfo = {
   name: "Errol Mc",
   title: "Software Engineer",
-  tagline: "Building polished, cross-platform experiences from cloud to client",
+  tagline: "Results-driven software engineer with experience across banking, manufacturing, and games",
   email: "errol@example.com",
   github: "https://github.com/ErrolMc",
-  location: "Ireland",
+  location: "Gold Coast, QLD",
 };
