@@ -5,7 +5,6 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { baseURL, description, siteName, title } from "@/config";
 import ThemeProvider from "@/components/ThemeProvider";
 import SmoothScroll from "@/components/SmoothScroll";
-import CustomCursor from "@/components/CustomCursor";
 import PageTransition from "@/components/PageTransition";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -92,7 +91,6 @@ export default function RootLayout({
       <body className="antialiased">
         <ThemeProvider>
           <SmoothScroll>
-            <CustomCursor />
             <Header />
             <PageTransition>
               {children}
