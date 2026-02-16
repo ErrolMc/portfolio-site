@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import TextReveal from "@/components/TextReveal";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -19,7 +20,6 @@ function ProjectCard({
   return (
     <ScrollReveal delay={index * 0.15} direction={index % 2 === 0 ? "left" : "right"}>
       <motion.article
-        layoutId={`project-card-${project.id}`}
         onClick={() => onSelect(project)}
         className="group relative cursor-pointer rounded-2xl overflow-hidden"
         style={{
@@ -55,13 +55,12 @@ function ProjectCard({
           </div>
 
           {/* Title */}
-          <motion.h3
-            layoutId={`project-title-${project.id}`}
+          <h3
             className="text-2xl md:text-3xl font-bold mb-3 transition-colors duration-300"
             style={{ color: "var(--foreground)" }}
           >
             {project.title}
-          </motion.h3>
+          </h3>
 
           {/* Tagline */}
           <p className="text-base mb-6 leading-relaxed" style={{ color: "var(--muted)" }}>
@@ -135,17 +134,17 @@ function ProjectModal({
       onClick={onClose}
     >
       {/* Backdrop */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+      <div
         className="absolute inset-0 backdrop-blur-md"
         style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
       />
 
       {/* Modal */}
       <motion.div
-        layoutId={`project-card-${project.id}`}
+        initial={{ opacity: 0, scale: 0.92, y: 30 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.92, y: 30 }}
+        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         className="relative z-10 w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-2xl"
         style={{
           backgroundColor: "var(--surface)",
@@ -182,13 +181,12 @@ function ProjectModal({
           </span>
 
           {/* Title */}
-          <motion.h3
-            layoutId={`project-title-${project.id}`}
+          <h3
             className="text-3xl md:text-4xl font-bold mb-4"
             style={{ color: "var(--foreground)" }}
           >
             {project.title}
-          </motion.h3>
+          </h3>
 
           {/* Description */}
           <p className="text-lg leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
@@ -270,7 +268,7 @@ function ProjectModal({
                   color: "var(--foreground)",
                 }}
               >
-                Live Demo
+                View Demo
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="7" y1="17" x2="17" y2="7" />
                   <polyline points="7 7 17 7 17 17" />
@@ -341,15 +339,19 @@ export default function ProjectsSection() {
         </div>
       </div>
 
-      {/* Project Modal */}
-      <AnimatePresence>
-        {selectedProject && (
-          <ProjectModal
-            project={selectedProject}
-            onClose={() => setSelectedProject(null)}
-          />
+      {/* Project Modal - rendered via portal to escape ancestor transforms */}
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {selectedProject && (
+              <ProjectModal
+                project={selectedProject}
+                onClose={() => setSelectedProject(null)}
+              />
+            )}
+          </AnimatePresence>,
+          document.body
         )}
-      </AnimatePresence>
     </section>
   );
 }
