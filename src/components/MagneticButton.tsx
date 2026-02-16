@@ -10,6 +10,8 @@ interface MagneticButtonProps {
   href?: string;
   target?: string;
   rel?: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
   onClick?: () => void;
   strength?: number;
   style?: React.CSSProperties;
@@ -22,6 +24,8 @@ export default function MagneticButton({
   href,
   target,
   rel,
+  type,
+  disabled,
   onClick,
   strength = 0.3,
   style,
@@ -49,6 +53,7 @@ export default function MagneticButton({
   const Tag = as === "a" ? "a" : as === "div" ? "div" : "button";
 
   const linkProps = as === "a" ? { href, target, rel } : {};
+  const buttonProps = as === "button" ? { type, disabled } : {};
 
   return (
     <motion.div
@@ -66,6 +71,7 @@ export default function MagneticButton({
         onClick={onClick}
         style={style}
         {...linkProps}
+        {...buttonProps}
       >
         {children}
       </Tag>
