@@ -19,7 +19,6 @@ function ProjectCard({
   return (
     <ScrollReveal delay={index * 0.15} direction={index % 2 === 0 ? "left" : "right"}>
       <motion.article
-        layoutId={`project-card-${project.id}`}
         onClick={() => onSelect(project)}
         className="group relative cursor-pointer rounded-2xl overflow-hidden"
         style={{
@@ -55,13 +54,12 @@ function ProjectCard({
           </div>
 
           {/* Title */}
-          <motion.h3
-            layoutId={`project-title-${project.id}`}
+          <h3
             className="text-2xl md:text-3xl font-bold mb-3 transition-colors duration-300"
             style={{ color: "var(--foreground)" }}
           >
             {project.title}
-          </motion.h3>
+          </h3>
 
           {/* Tagline */}
           <p className="text-base mb-6 leading-relaxed" style={{ color: "var(--muted)" }}>
@@ -145,7 +143,10 @@ function ProjectModal({
 
       {/* Modal */}
       <motion.div
-        layoutId={`project-card-${project.id}`}
+        initial={{ opacity: 0, scale: 0.92, y: 30 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.92, y: 30 }}
+        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         className="relative z-10 w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-2xl"
         style={{
           backgroundColor: "var(--surface)",
@@ -182,13 +183,12 @@ function ProjectModal({
           </span>
 
           {/* Title */}
-          <motion.h3
-            layoutId={`project-title-${project.id}`}
+          <h3
             className="text-3xl md:text-4xl font-bold mb-4"
             style={{ color: "var(--foreground)" }}
           >
             {project.title}
-          </motion.h3>
+          </h3>
 
           {/* Description */}
           <p className="text-lg leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
