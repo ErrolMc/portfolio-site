@@ -31,7 +31,7 @@ export default function TextReveal({
       <span className="sr-only">{children}</span>
       <span aria-hidden="true" className="inline-flex flex-wrap">
         {units.map((unit, i) => (
-          <span key={i} className="overflow-hidden inline-block">
+          <span key={i} className="overflow-hidden inline-block pb-[0.08em] -mb-[0.08em] align-bottom">
             <motion.span
               data-no-theme-transition
               className="inline-block"
