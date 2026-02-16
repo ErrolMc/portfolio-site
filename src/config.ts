@@ -1,23 +1,20 @@
 export const siteName =
-  process.env.NEXT_PUBLIC_SITE_NAME || "SEO Next.js Starter";
+  process.env.NEXT_PUBLIC_SITE_NAME || "Errol Mc — Software Engineer";
 
 export const title =
   process.env.NEXT_PUBLIC_TITLE ||
-  "SEO Next.js Starter - A Starter Template for SEO Optimized Next.js Projects";
+  "Errol Mc — Software Engineer | Full-Stack & Cross-Platform Developer";
 
 export const description =
   process.env.NEXT_PUBLIC_DESCRIPTION ||
-  "A simple and easy-to-use starter template for building SEO optimized Next.js applications with best practices and performance in mind.";
+  "Portfolio of Errol Mc, a software engineer building polished cross-platform experiences from cloud to client. Specializing in .NET, React, and real-time systems.";
 
-// Last baseURL
-const defaultBaseURL = "https://seo-nextjs-starter.vercel.app";
+const defaultBaseURL = "https://errolmc.dev";
 
-// Vercel baseURL, make sure it's a valid URL
 const VERCEL_URL =
   process.env.NEXT_PUBLIC_VERCEL_URL &&
   `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
 
-// meta base url
 export const baseURL =
   process.env.NEXT_PUBLIC_URL ||
   VERCEL_URL ||
