@@ -97,7 +97,7 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/ErrolMc/MusicLibraryManager",
     color: "var(--accent-yellow)",
-    year: "2025",
+    year: "2026",
     category: "Desktop",
   },
   {

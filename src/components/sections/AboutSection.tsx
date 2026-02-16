@@ -187,44 +187,6 @@ export default function AboutSection() {
               <TimelineItem key={i} item={item} index={i} />
             ))}
 
-            {/* Education */}
-            <ScrollReveal delay={0.4}>
-              <h3
-                className="text-sm font-semibold tracking-[0.15em] uppercase mb-8 mt-12"
-                style={{ color: "var(--foreground)" }}
-              >
-                Education
-              </h3>
-            </ScrollReveal>
-
-            {education.map((edu, i) => (
-              <ScrollReveal key={i} delay={0.5 + i * 0.15}>
-                <div className="relative pl-8 pb-8 last:pb-0">
-                  <div
-                    className="absolute left-0 top-3 w-[1px] h-full"
-                    style={{ backgroundColor: "var(--card-border)" }}
-                  />
-                  <div
-                    className="absolute left-[-4px] top-2.5 w-[9px] h-[9px] rounded-full"
-                    style={{ backgroundColor: "var(--accent-yellow)" }}
-                  />
-                  <span className="text-sm font-medium" style={{ color: "var(--accent-yellow)" }}>
-                    {edu.period}
-                  </span>
-                  <h4 className="text-xl font-bold mt-1 mb-1" style={{ color: "var(--foreground)" }}>
-                    {edu.degree}
-                  </h4>
-                  <p className="text-base mb-2" style={{ color: "var(--muted)" }}>
-                    {edu.institution}
-                  </p>
-                  {edu.details && (
-                    <p className="text-sm" style={{ color: "var(--muted)" }}>
-                      {edu.details}
-                    </p>
-                  )}
-                </div>
-              </ScrollReveal>
-            ))}
           </div>
 
           {/* Right column - Skills */}
@@ -261,6 +223,44 @@ export default function AboutSection() {
                 </div>
               ))}
             </div>
+
+            <ScrollReveal delay={0.35}>
+              <h3
+                className="text-sm font-semibold tracking-[0.15em] uppercase mb-8 mt-12"
+                style={{ color: "var(--foreground)" }}
+              >
+                Education
+              </h3>
+            </ScrollReveal>
+
+            {education.map((edu, i) => (
+              <ScrollReveal key={i} delay={0.45 + i * 0.15}>
+                <div className="relative pl-8 pb-8 last:pb-0">
+                  <div
+                    className="absolute left-0 top-3 w-[1px] h-full"
+                    style={{ backgroundColor: "var(--card-border)" }}
+                  />
+                  <div
+                    className="absolute left-[-4px] top-2.5 w-[9px] h-[9px] rounded-full"
+                    style={{ backgroundColor: "var(--accent-yellow)" }}
+                  />
+                  <span className="text-sm font-medium" style={{ color: "var(--accent-yellow)" }}>
+                    {edu.period}
+                  </span>
+                  <h4 className="text-xl font-bold mt-1 mb-1" style={{ color: "var(--foreground)" }}>
+                    {edu.degree}
+                  </h4>
+                  <p className="text-base mb-2" style={{ color: "var(--muted)" }}>
+                    {edu.institution}
+                  </p>
+                  {edu.details && (
+                    <p className="text-sm" style={{ color: "var(--muted)" }}>
+                      {edu.details}
+                    </p>
+                  )}
+                </div>
+              </ScrollReveal>
+            ))}
 
           </div>
         </div>
