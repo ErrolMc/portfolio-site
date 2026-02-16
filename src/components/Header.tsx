@@ -9,7 +9,6 @@ import MagneticButton from "./MagneticButton";
 const navigation = [
   { name: "Work", href: "/#projects" },
   { name: "About", href: "/#about" },
-  { name: "Contact", href: "/#contact" },
 ];
 
 export default function Header() {
