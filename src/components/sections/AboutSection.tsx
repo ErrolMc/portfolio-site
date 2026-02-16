@@ -99,12 +99,10 @@ function TimelineItem({
 }
 
 export default function AboutSection() {
-  const allSkills = [
-    { category: "Languages", items: skills.languages },
-    { category: "Frameworks", items: skills.frameworks },
-    { category: "Cloud & Infra", items: skills.cloud },
-    { category: "Tools", items: skills.tools },
-  ];
+  const allSkills = Object.entries(skills).map(([category, items]) => ({
+    category,
+    items,
+  }));
 
   return (
     <section id="about" className="py-32 md:py-40 section-noise relative overflow-hidden">
@@ -154,11 +152,10 @@ export default function AboutSection() {
                 className="text-lg leading-relaxed mb-8"
                 style={{ color: "var(--muted)" }}
               >
-                I&apos;m a software engineer who loves building things that work
-                beautifully across platforms. Whether it&apos;s a real-time chat
-                system running on Azure, a cross-platform desktop app, or a
-                mobile flashcard tool — I focus on clean architecture, robust
-                backends, and polished user experiences.
+                Results-driven software engineer with several years of industry
+                experience across banking, manufacturing, and games. Strong
+                background working in large C#/.NET codebases, practicing TDD,
+                CQRS, and CI/CD to ship reliable, maintainable features.
               </p>
             </ScrollReveal>
 
@@ -167,10 +164,12 @@ export default function AboutSection() {
                 className="text-lg leading-relaxed mb-12"
                 style={{ color: "var(--muted)" }}
               >
-                My stack spans C#/.NET for backend and desktop, React/TypeScript
-                for web, and React Native for mobile. I&apos;m particularly drawn
-                to real-time systems, microservices architecture, and making
-                complex things feel simple.
+                Comfortable translating complex domain requirements — from
+                civil-engineering rules to mission-critical banking workflows
+                and real-time gameplay systems — into practical technical
+                solutions. Known for rapid onboarding into legacy systems,
+                mentoring developers from other stacks, and collaborating
+                effectively with distributed teams.
               </p>
             </ScrollReveal>
 
