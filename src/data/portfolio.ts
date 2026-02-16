@@ -263,10 +263,11 @@ export const skills = {
 };
 
 export const personalInfo = {
-  name: "Errol Mc",
+  name: "Errol McFadden",
   title: "Software Engineer",
   tagline: "Results-driven software engineer with experience across banking, manufacturing, and games",
-  email: "errol@example.com",
+  email: "errolmcfadden@hotmail.com",
   github: "https://github.com/ErrolMc",
+  linkedin: "https://www.linkedin.com/in/errol-mcfadden/",
   location: "Gold Coast, QLD",
 };

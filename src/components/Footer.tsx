@@ -25,9 +25,7 @@ export default function Footer() {
               className="text-xl font-bold tracking-tight"
               style={{ color: "var(--foreground)" }}
             >
-              errol
-              <span style={{ color: "var(--accent-green)" }}>.</span>
-              mc
+              Errol McFadden
             </span>
           </motion.div>
 

@@ -54,7 +54,7 @@ export async function GET() {
             letterSpacing: "-2px",
           }}
         >
-          Errol Mc
+          Errol McFadden
         </h1>
 
         <p

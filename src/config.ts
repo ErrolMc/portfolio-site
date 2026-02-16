@@ -1,13 +1,13 @@
 export const siteName =
-  process.env.NEXT_PUBLIC_SITE_NAME || "Errol Mc — Software Engineer";
+  process.env.NEXT_PUBLIC_SITE_NAME || "Errol McFadden — Software Engineer";
 
 export const title =
   process.env.NEXT_PUBLIC_TITLE ||
-  "Errol Mc — Software Engineer | Full-Stack & Cross-Platform Developer";
+  "Errol McFadden — Software Engineer | Full-Stack & Cross-Platform Developer";
 
 export const description =
   process.env.NEXT_PUBLIC_DESCRIPTION ||
-  "Portfolio of Errol Mc, a software engineer building polished cross-platform experiences from cloud to client. Specializing in .NET, React, and real-time systems.";
+  "Portfolio of Errol McFadden, a software engineer building polished cross-platform experiences from cloud to client. Specializing in .NET, React, and real-time systems.";
 
 const defaultBaseURL = "https://errolmc.dev";
 
