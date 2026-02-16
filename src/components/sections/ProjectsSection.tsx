@@ -298,7 +298,7 @@ export default function ProjectsSection() {
                 className="text-sm font-medium tracking-[0.2em] uppercase"
                 style={{ color: "var(--accent-green)" }}
               >
-                Selected Work
+                Selected Projects
               </span>
             </div>
           </ScrollReveal>

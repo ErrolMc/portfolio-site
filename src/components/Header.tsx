@@ -8,7 +8,7 @@ import MagneticButton from "./MagneticButton";
 import { personalInfo } from "@/data/portfolio";
 
 const navigation = [
-  { name: "Work", href: "/#projects" },
+  { name: "Projects", href: "/#projects" },
   { name: "About", href: "/#about" },
 ];
 
