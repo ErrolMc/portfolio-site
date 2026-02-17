@@ -183,8 +183,8 @@ export default function HeroSection() {
                 {/* Stats */}
                 <div className="mt-12 space-y-6">
                   {[
-                    { label: "Projects", value: "4+" },
-                    { label: "Platforms", value: "5+" },
+                    { label: "Projects", value: "5+" },
+                    { label: "Platforms", value: "8+" },
                     { label: "Technologies", value: "15+" },
                   ].map((stat, i) => (
                     <motion.div
