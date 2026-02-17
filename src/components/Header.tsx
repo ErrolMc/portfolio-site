@@ -39,11 +39,11 @@ export default function Header() {
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-        scrolled ? "py-3 backdrop-blur-xl border-b" : "py-5"
+        scrolled && !isMenuOpen ? "py-3 backdrop-blur-xl border-b" : "py-5"
       }`}
       style={{
-        backgroundColor: scrolled ? "var(--header-bg)" : "transparent",
-        borderColor: scrolled ? "var(--card-border)" : "transparent",
+        backgroundColor: scrolled && !isMenuOpen ? "var(--header-bg)" : "transparent",
+        borderColor: scrolled && !isMenuOpen ? "var(--card-border)" : "transparent",
       }}
     >
       <nav
