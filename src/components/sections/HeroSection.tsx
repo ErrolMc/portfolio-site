@@ -165,14 +165,14 @@ export default function HeroSection() {
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                   className="w-48 h-48 mx-auto"
                 >
-                  <svg viewBox="0 0 200 200" className="w-full h-full">
+                  <svg viewBox="0 0 200 200" className="w-full h-full" overflow="visible">
                     <defs>
                       <path
                         id="circlePath"
-                        d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"
+                        d="M 100, 100 m -85, 0 a 85,85 0 1,1 170,0 a 85,85 0 1,1 -170,0"
                       />
                     </defs>
-                    <text style={{ fill: "var(--muted)", fontSize: "14px", letterSpacing: "4px" }}>
+                    <text style={{ fill: "var(--muted)", fontSize: "12.5px", letterSpacing: "3px" }}>
                       <textPath href="#circlePath">
                         SOFTWARE ENGINEER • FULL-STACK • CROSS-PLATFORM •{" "}
                       </textPath>
