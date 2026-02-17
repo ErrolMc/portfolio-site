@@ -15,6 +15,7 @@ const navigation = [
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
   const resumeUrl = process.env.NEXT_PUBLIC_RESUME_URL;
@@ -28,8 +29,16 @@ export default function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
     };
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
@@ -38,12 +47,12 @@ export default function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-        scrolled && !isMenuOpen ? "py-3 backdrop-blur-xl border-b" : "py-5"
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 backdrop-blur-xl ${
+        scrolled || isMenuOpen ? "py-3 border-b" : "py-5"
       }`}
       style={{
-        backgroundColor: scrolled && !isMenuOpen ? "var(--header-bg)" : "transparent",
-        borderColor: scrolled && !isMenuOpen ? "var(--card-border)" : "transparent",
+        backgroundColor: scrolled || isMobile ? "var(--header-bg)" : "transparent",
+        borderColor: scrolled || isMenuOpen ? "var(--card-border)" : "transparent",
       }}
     >
       <nav
@@ -246,7 +255,7 @@ export default function Header() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="md:hidden overflow-hidden"
-            style={{ backgroundColor: "var(--surface)" }}
+            style={{ backgroundColor: "transparent" }}
           >
             <div className="px-6 py-6 space-y-4">
               {navigation.map((item, i) => (
