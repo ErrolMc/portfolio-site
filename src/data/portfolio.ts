@@ -125,6 +125,34 @@ export const projects: Project[] = [
     year: "2024",
     category: "Mobile",
   },
+  {
+    id: "mortgage-tool",
+    title: "Mortgage Tool",
+    tagline: "Web-based mortgage calculator with split-mortgage scenarios",
+    description:
+      "A mortgage calculator web app for computing repayments and modelling complex shared mortgage scenarios between two parties. Features flexible repayment frequencies, extra payment simulations, and preset management for comparing scenarios.",
+    techStack: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "Jest",
+      "Vercel",
+    ],
+    features: [
+      "Flexible repayment calculations across yearly, monthly, fortnightly, and weekly intervals",
+      "Principal vs interest breakdowns at specific mortgage milestones",
+      "Dashboard metrics: total interest, principal repaid, equity, and outstanding balance",
+      "Extra payment modelling to simulate additional repayment scenarios",
+      "Split-mortgage calculator for dual-person shared mortgage planning",
+      "Preset system for saving, loading, and comparing calculation scenarios",
+    ],
+    github: "https://github.com/ErrolMc/MortgageTool",
+    liveUrl: "https://mortgages.errolsplace.com",
+    color: "var(--accent-green)",
+    year: "2025",
+    category: "Full-Stack",
+  },
 ];
 
 export interface Experience {
