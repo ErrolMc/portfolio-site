@@ -18,6 +18,10 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       touchMultiplier: 2,
+      prevent: (node) => {
+        if (!(node instanceof HTMLElement)) return false;
+        return Boolean(node.closest("[data-lenis-prevent]"));
+      },
     });
 
     lenisRef.current = lenis;

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import TextReveal from "@/components/TextReveal";
@@ -125,6 +126,19 @@ function ProjectModal({
   project: Project;
   onClose: () => void;
 }) {
+  const [selectedScreenshotIndex, setSelectedScreenshotIndex] = useState(0);
+  const [modalView, setModalView] = useState<"details" | "screenshots">("details");
+  const hasScreenshots = Boolean(project.screenshots && project.screenshots.length > 0);
+
+  useEffect(() => {
+    setSelectedScreenshotIndex(0);
+    setModalView("details");
+  }, [project.id]);
+
+  const selectedScreenshot = hasScreenshots
+    ? project.screenshots?.[selectedScreenshotIndex]
+    : undefined;
+
   return (
     <div
       className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8"
@@ -146,7 +160,10 @@ function ProjectModal({
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.92, y: 30 }}
         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-2xl"
+        className="relative z-10 w-full max-w-3xl max-h-[85vh] overflow-y-auto overscroll-contain rounded-2xl"
+        data-lenis-prevent
+        data-lenis-prevent-wheel
+        data-lenis-prevent-touch
         style={{
           backgroundColor: "var(--surface)",
           border: "1px solid var(--card-border)",
@@ -189,55 +206,112 @@ function ProjectModal({
             {project.title}
           </h3>
 
-          {/* Description */}
-          <p className="text-lg leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
-            {project.description}
-          </p>
+          {modalView === "details" && (
+            <>
+              {/* Description */}
+              <p className="text-lg leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
+                {project.description}
+              </p>
 
-          {/* Features */}
-          <div className="mb-8">
-            <h4 className="text-sm font-semibold tracking-[0.1em] uppercase mb-4" style={{ color: "var(--foreground)" }}>
-              Key Features
-            </h4>
-            <ul className="space-y-3">
-              {project.features.map((feature, i) => (
-                <motion.li
-                  key={i}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + i * 0.05 }}
-                  className="flex items-start gap-3"
-                >
-                  <span
-                    className="w-1.5 h-1.5 rounded-full mt-2.5 shrink-0"
-                    style={{ backgroundColor: project.color }}
-                  />
-                  <span style={{ color: "var(--muted)" }}>{feature}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
+              {/* Features */}
+              <div className="mb-8">
+                <h4 className="text-sm font-semibold tracking-[0.1em] uppercase mb-4" style={{ color: "var(--foreground)" }}>
+                  Key Features
+                </h4>
+                <ul className="space-y-3">
+                  {project.features.map((feature, i) => (
+                    <motion.li
+                      key={i}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 + i * 0.05 }}
+                      className="flex items-start gap-3"
+                    >
+                      <span
+                        className="w-1.5 h-1.5 rounded-full mt-2.5 shrink-0"
+                        style={{ backgroundColor: project.color }}
+                      />
+                      <span style={{ color: "var(--muted)" }}>{feature}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
 
-          {/* Tech Stack */}
-          <div className="mb-10">
-            <h4 className="text-sm font-semibold tracking-[0.1em] uppercase mb-4" style={{ color: "var(--foreground)" }}>
-              Technology Stack
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {project.techStack.map((tech) => (
-                <span
-                  key={tech}
-                  className="text-sm px-4 py-2 rounded-full font-medium"
-                  style={{
-                    backgroundColor: "var(--surface-elevated)",
-                    color: "var(--foreground)",
-                  }}
-                >
-                  {tech}
-                </span>
-              ))}
+              {/* Tech Stack */}
+              <div className="mb-10">
+                <h4 className="text-sm font-semibold tracking-[0.1em] uppercase mb-4" style={{ color: "var(--foreground)" }}>
+                  Technology Stack
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {project.techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="text-sm px-4 py-2 rounded-full font-medium"
+                      style={{
+                        backgroundColor: "var(--surface-elevated)",
+                        color: "var(--foreground)",
+                      }}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+
+          {modalView === "screenshots" && hasScreenshots && selectedScreenshot && (
+            <div className="mb-10">
+              <h4 className="text-sm font-semibold tracking-[0.1em] uppercase mb-4" style={{ color: "var(--foreground)" }}>
+                Screenshots
+              </h4>
+
+              <div
+                className="relative w-full overflow-hidden rounded-xl mb-4"
+                style={{
+                  aspectRatio: "885 / 709",
+                  backgroundColor: "var(--surface-elevated)",
+                  border: "1px solid var(--card-border)",
+                }}
+              >
+                <Image
+                  src={selectedScreenshot}
+                  alt={`${project.title} screenshot ${selectedScreenshotIndex + 1}`}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                />
+              </div>
+
+              <div className="grid grid-cols-4 gap-2">
+                {project.screenshots?.map((screenshot, index) => (
+                  <button
+                    key={screenshot}
+                    type="button"
+                    onClick={() => setSelectedScreenshotIndex(index)}
+                    className="relative overflow-hidden rounded-lg transition-opacity"
+                    style={{
+                      aspectRatio: "885 / 709",
+                      border:
+                        selectedScreenshotIndex === index
+                          ? `2px solid ${project.color}`
+                          : "1px solid var(--card-border)",
+                      opacity: selectedScreenshotIndex === index ? 1 : 0.72,
+                    }}
+                    aria-label={`View screenshot ${index + 1}`}
+                  >
+                    <Image
+                      src={screenshot}
+                      alt={`${project.title} thumbnail ${index + 1}`}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 33vw, 240px"
+                    />
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Links */}
           <div className="flex flex-wrap gap-4">
@@ -276,6 +350,34 @@ function ProjectModal({
                 </svg>
               </MagneticButton>
             )}
+            {hasScreenshots && modalView === "details" && (
+              <MagneticButton
+                as="button"
+                type="button"
+                onClick={() => setModalView("screenshots")}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold border-2 transition-colors duration-300"
+                style={{
+                  borderColor: "var(--card-border)",
+                  color: "var(--foreground)",
+                }}
+              >
+                View Screenshots
+              </MagneticButton>
+            )}
+            {hasScreenshots && modalView === "screenshots" && (
+              <MagneticButton
+                as="button"
+                type="button"
+                onClick={() => setModalView("details")}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold border-2 transition-colors duration-300"
+                style={{
+                  borderColor: "var(--card-border)",
+                  color: "var(--foreground)",
+                }}
+              >
+                Back to Details
+              </MagneticButton>
+            )}
           </div>
         </div>
       </motion.div>
@@ -285,6 +387,17 @@ function ProjectModal({
 
 export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [selectedProject]);
 
   return (
     <section id="projects" className="py-32 md:py-40 section-noise">

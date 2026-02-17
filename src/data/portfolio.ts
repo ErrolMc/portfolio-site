@@ -7,6 +7,7 @@ export interface Project {
   features: string[];
   github: string;
   liveUrl?: string;
+  screenshots?: string[];
   color: string;
   year: string;
   category: string;
@@ -44,8 +45,8 @@ export const projects: Project[] = [
     category: "Full-Stack",
   },
   {
-    id: "worldle",
-    title: "Worldle",
+    id: "wordle",
+    title: "Wordle",
     tagline: "Full-stack Wordle clone with user accounts and daily challenges",
     description:
       "A full-stack implementation of the Wordle word-guessing game with user accounts, daily words, and game history tracking. Features both web and desktop clients with automated CI/CD pipelines.",
@@ -66,8 +67,14 @@ export const projects: Project[] = [
       "Desktop builds for Windows, macOS, and Linux via Electron",
       "Automated deployment via Vercel and GitHub Actions",
     ],
-    github: "https://github.com/ErrolMc/Worldle",
+    github: "https://github.com/ErrolMc/Wordle",
     liveUrl: "https://wordle.errolsplace.com",
+    screenshots: [
+      "/projects/wordle/wordle-1.webp",
+      "/projects/wordle/wordle-2.webp",
+      "/projects/wordle/wordle-3.webp",
+      "/projects/wordle/wordle-4.webp",
+    ],
     color: "var(--accent-green)",
     year: "2025",
     category: "Full-Stack",
@@ -96,13 +103,17 @@ export const projects: Project[] = [
       "Change detection to prevent accidental data loss",
     ],
     github: "https://github.com/ErrolMc/MusicLibraryManager",
+    screenshots: [
+      "/projects/musiclibrarymanager/musiclibrarymanager-1.webp",
+      "/projects/musiclibrarymanager/musiclibrarymanager-2.webp",
+    ],
     color: "var(--accent-yellow)",
     year: "2026",
     category: "Desktop",
   },
   {
-    id: "cardz",
-    title: "Cardz",
+    id: "flashcardapp",
+    title: "Flashcard App",
     tagline: "Mobile flashcard app for iOS and Android",
     description:
       "A cross-platform flashcard management application for creating, organizing, and studying flashcards on iOS and Android. Built with React Native and Expo for a seamless mobile experience.",
@@ -121,6 +132,14 @@ export const projects: Project[] = [
       "Modular architecture with React Context state management",
     ],
     github: "https://github.com/ErrolMc/Cardz",
+    screenshots: [
+      "/projects/flashcardapp/flashcardapp-1.webp",
+      "/projects/flashcardapp/flashcardapp-2.webp",
+      "/projects/flashcardapp/flashcardapp-3.webp",
+      "/projects/flashcardapp/flashcardapp-4.webp",
+      "/projects/flashcardapp/flashcardapp-5.webp",
+      "/projects/flashcardapp/flashcardapp-6.webp",
+    ],
     color: "var(--primary)",
     year: "2024",
     category: "Mobile",
@@ -151,7 +170,7 @@ export const projects: Project[] = [
     liveUrl: "https://mortgages.errolsplace.com",
     color: "var(--accent-green)",
     year: "2025",
-    category: "Full-Stack",
+    category: "Web",
   },
 ];
 
