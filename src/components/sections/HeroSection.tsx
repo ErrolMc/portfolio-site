@@ -127,7 +127,7 @@ export default function HeroSection() {
                 style={{ color: "var(--muted)" }}
               >
                 {personalInfo.tagline}. From real-time cloud systems to cross-platform
-                mobile apps — I craft robust software with clean architecture and
+                mobile apps. I craft robust software with clean architecture and
                 polished interfaces.
               </p>
             </ScrollReveal>

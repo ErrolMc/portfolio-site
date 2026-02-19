@@ -164,9 +164,9 @@ export default function AboutSection() {
                 className="text-lg leading-relaxed mb-12"
                 style={{ color: "var(--muted)" }}
               >
-                Comfortable translating complex domain requirements — from
+                Comfortable translating complex domain requirements, from
                 civil-engineering rules to mission-critical banking workflows
-                and real-time gameplay systems — into practical technical
+                and real-time gameplay systems, into practical technical
                 solutions. Known for rapid onboarding into legacy systems,
                 mentoring developers from other stacks, and collaborating
                 effectively with distributed teams.
