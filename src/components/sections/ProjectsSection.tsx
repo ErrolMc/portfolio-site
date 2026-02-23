@@ -441,7 +441,7 @@ export default function ProjectsSection() {
           {projects.map((project, i) => (
             <div
               key={project.id}
-              className={i === 0 ? "md:col-span-2" : ""}
+              className={(i === 0 || i === 3) ? "md:col-span-2" : ""}
             >
               <ProjectCard
                 project={project}
